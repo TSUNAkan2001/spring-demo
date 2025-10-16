@@ -1,7 +1,8 @@
-markdown
 # 🌿 Git Flow 運用ルール（Spring Boot プロジェクト）
 
 ## 🚀 ブランチ構成
+
+
 
 main
 ├─ develop
@@ -12,7 +13,6 @@ main
 ├─ release/xxxx # リリース準備
 └─ hotfix/xxxx # 緊急修正
 
-yaml
 
 ---
 
@@ -40,11 +40,11 @@ git checkout -b feature/add-login
 git add .
 git commit -m "Add login feature"
 git push -u origin feature/add-login
+
+
 → GitHubでPR（Pull Request）を作成し、developへマージ。
 
 ② リリース準備
-bash
-
 git checkout develop
 git pull
 git checkout -b release/v1.0.0
@@ -52,12 +52,12 @@ git checkout -b release/v1.0.0
 git add .
 git commit -m "Prepare release v1.0.0"
 git push -u origin release/v1.0.0
+
+
 → GitHubでrelease/v1.0.0 → mainへPR
 → マージ後にリリースタグを作成。
 
 ③ 緊急修正（本番環境の不具合対応）
-bash
-
 git checkout main
 git pull
 git checkout -b hotfix/fix-login-bug
@@ -65,6 +65,8 @@ git checkout -b hotfix/fix-login-bug
 git add .
 git commit -m "Fix login bug"
 git push -u origin hotfix/fix-login-bug
+
+
 → GitHubでhotfix → mainとdevelopにマージ。
 
 📘 命名規則
@@ -75,20 +77,19 @@ refactor	refactor/db-layer	構造改善
 docs	docs/readme-update	ドキュメント更新
 release	release/v1.0.0	リリース準備
 hotfix	hotfix/fix-login-error	緊急修正
-
 🔖 コミットメッセージ規則（任意）
-css
-
 [カテゴリ] 内容
-例：
 
-csharp
+
+例：
 
 [add] implement user registration API
 [fix] correct null pointer on login
 [refactor] split controller into service layer
 [docs] update project README
+
 🧠 Tips
+
 develop ブランチは常に最新の開発状態を保つ
 
 main には「本番リリース済み」コードのみを置く
@@ -106,8 +107,8 @@ feature/fix ブランチは作業が終わったら削除
 マージ（例: developへ）	git checkout develop && git merge feature/xxxx
 不要ブランチ削除	git branch -d feature/xxxx
 リモートブランチ削除	git push origin --delete feature/xxxx
-
 ✅ 運用ポイント
+
 PR（Pull Request）でレビューを必ず通す
 
 main への直接 push は禁止（PR経由でのみ反映）
@@ -115,8 +116,6 @@ main への直接 push は禁止（PR経由でのみ反映）
 バージョン番号は release/vX.Y.Z 形式で管理
 
 コミットメッセージは英語 or 一貫した書式で統一
-
-yaml
 
 
 ---
