@@ -128,3 +128,6 @@ main への直接 push は禁止（PR経由でのみ反映）
 git add README.md
 git commit -m "Add Git Flow README"
 git push
+
+
+更新日：2025-10-19
